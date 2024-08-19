@@ -10,5 +10,7 @@ server.use(ejsLayouts);
 //Create an instance of ProductController
 const productController = new ProductController();
 server.get("/", productController.getProduct)
+server.get('/new', productController.getAddForm)
+server.post('/', productController.addNewProduct)
 server.use(express.static('src/views'))
 server.listen(3400);

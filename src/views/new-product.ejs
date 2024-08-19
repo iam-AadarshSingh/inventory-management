@@ -1,0 +1,18 @@
+<h1 class="mt-5 mb-4">Add New Product</h1>
+<form action="/" method="post">
+    <label for="name" class="form-label">Product Name</label>
+    <input type="text" class="form-control" id="name" name="name" required>
+    <div class="mb-3">
+        <label for="desc" class="form-label">Product Description</label>
+        <textarea class="form-control" name="desc" id="desc" rows="3" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="text" class="form-control" id="price" name="price" required>
+    </div>
+    <div class="mb-3">
+        <label for="imageurl" class="form-label">image URL</label>
+        <input type="url" class="form-control" id="imageurl" name="imageurl" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Product</button>
+</form>
