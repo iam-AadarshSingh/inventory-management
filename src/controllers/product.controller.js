@@ -10,14 +10,33 @@ export default class ProductController {
     }
 
     getAddForm(req, res) {
-        return res.render('new-product');
+        return res.render('new-product', { errorMessage: null });
     }
 
     addNewProduct(req, res) {
+        //Validating Data
+        const { name, price, imageurl } = req.body;
+        let errors = [];
+        if (!name || name.trim() == '') {
+            errors.push("Name is required");
+        }
+        if (!price || parseFloat(price) < 1) {
+            errors.push("Price must br positive value");
+        }
+        try {
+            const validUrl = new URL(imageurl)
+        }
+        catch (err) {
+            errors.push("URL is invalid");
+        }
+        if (errors.length > 0) {
+            return res.render('new-product', { errorMessage: errors[0] });
+        }
         //access data from form
-        console.log(req.body)
         ProductModel.add(req.body);
-        let products = ProductModel.get()
+        var products = ProductModel.get()
         return res.render('products', { products: products })
     }
 }
+
+//export default ProductController;
