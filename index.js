@@ -18,7 +18,8 @@ server.use(ejsLayouts);
 const productController = new ProductController();
 server.get("/", productController.getProduct)
 
-server.get('/new', productController.getAddForm)
+server.get('/new', productController.getAddForm);
+server.get('/update-product', productController.getUpateProductView)
 
 server.post(
     '/',

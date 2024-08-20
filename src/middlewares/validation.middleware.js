@@ -1,9 +1,8 @@
 import { body, validationResult } from "express-validator";
 const validateRequest = async (req, res, next) => {
-    console.log(req.body);
     //1. Setup rules for validation.
     const rules = [
-        body('name').isEmpty().withMessage('Name is required'),
+        body('name').notEmpty().withMessage('Name is required'),
         body('price').isFloat({ gt: 0 }).withMessage('Price should be a positive value'),
         body('imageUrl').isURL().withMessage('Invalid Url')
     ];
@@ -14,7 +13,6 @@ const validateRequest = async (req, res, next) => {
 
     //3. Check if there are any error after running the rules
     var validationErrors = validationResult(req);
-    console.log(validationErrors)
 
     //4. If errors, return the error message
     if (!validationErrors.isEmpty()) {
