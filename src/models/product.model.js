@@ -7,7 +7,7 @@ export default class ProductModel {
             this.imageurl = _imageurl
     }
 
-    static get() {
+    static getAll() {
         return products;
     }
 
