@@ -4,21 +4,22 @@
     </div>
     <%}%>
         <h1 class="mt-5 mb-4">Update Product</h1>
-        <form action="/" method="post">
-            <input type="hidden" class="form-control" id="name" name="name">
+        <form action="/update-product/" method="post">
+            <input type="hidden" class="form-control" id="id" name="id" value="<%= product._id %>">
             <label for="name" class="form-label">Product Name</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <input type="text" class="form-control" id="name" name="name" value="<%= product._name %>">
             <div class="mb-3">
                 <label for="desc" class="form-label">Product Description</label>
-                <textarea class="form-control" name="desc" id="desc" rows="3"></textarea>
+                <textarea class="form-control" name="desc" id="desc" rows="3"><%= product._desc %>
+                </textarea>
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input type="text" class="form-control" id="price" name="price">
+                <input type="text" class="form-control" id="price" name="price" value="<%= product._price %>">
             </div>
             <div class="mb-3">
                 <label for="imageurl" class="form-label">image URL</label>
-                <input type="text" class="form-control" id="imageurl" name="imageurl">
+                <input type="text" class="form-control" id="imageurl" name="imageurl" value="<%= product.imageurl %>">
             </div>
-            <button type="submit" class="btn btn-primary">Add Product</button>
+            <button type="submit" class="btn btn-primary">Update Product</button>
         </form>

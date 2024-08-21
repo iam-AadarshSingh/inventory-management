@@ -26,7 +26,10 @@
                     <%= product._price %>
                 </td>
                 <td><img src="<%= product.imageurl %>"></td>
-                <td><a href="update-product" class="btn btn-warning">Update</a></td>
+                <td>
+                    <a href="update-product/<%= product._id %>" class="btn btn-warning">Update Product</a>
+                    <a href="" class="btn btn-warning">Delete Product</a>
+                </td>
             </tr>
             <%})%>
     </tbody>

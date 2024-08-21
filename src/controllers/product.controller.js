@@ -21,15 +21,21 @@ class ProductController {
 
     getUpateProductView(req, res, next) {
         //1. If product exist then return view
-        const { id } = req.body;
+        const id = req.params.id;
         const productFound = ProductModel.getById(id);
         if (productFound) {
-            res.sender('update-product', { product: productFound, errorMessage: null });
+            res.render('update-product', { product: productFound, errorMessage: null });
         }
         //2. else return errors
         else {
             res.status(401).send("Product not Found")
         }
+    }
+
+    postUpdateProduct(req, res) {
+        ProductModel.update(req.body);
+        var products = ProductModel.getAll();
+        return res.render('index', { products });
     }
 }
 

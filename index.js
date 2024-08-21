@@ -19,12 +19,16 @@ const productController = new ProductController();
 server.get("/", productController.getProduct)
 
 server.get('/new', productController.getAddForm);
-server.get('/update-product', productController.getUpateProductView)
+server.get('/update-product/:id', productController.getUpateProductView)
 
 server.post(
     '/',
     validationMiddleware,
     productController.postAddProduct)
+
+server.post(
+    "/update-product",
+    productController.postUpdateProduct);
 
 //server.use(express.static('src/views'))
 
