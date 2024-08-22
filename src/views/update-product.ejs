@@ -1,9 +1,9 @@
+<h1 class="mt-5 mb-4 header">Update Product</h1>
 <%if(errorMessage){%>
     <div class="alert alert-danger" role="alert">
         <%=errorMessage%>
     </div>
     <%}%>
-        <h1 class="mt-5 mb-4">Update Product</h1>
         <form action="/update-product/" method="post">
             <input type="hidden" class="form-control" id="id" name="id" value="<%= product._id %>">
             <label for="name" class="form-label">Product Name</label>
