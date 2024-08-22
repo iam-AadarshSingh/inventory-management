@@ -5,6 +5,9 @@ import path from 'path'
 import validationMiddleware from './src/middlewares/validation.middleware.js';
 const server = express();
 
+//Adding JavaScript file here from public folder
+server.use(express.static("public"));
+
 //parse from data
 server.use(express.urlencoded({ extended: true }))
 
@@ -21,7 +24,8 @@ server.get("/", productController.getProduct)
 server.get('/new', productController.getAddForm);
 server.get('/update-product/:id', productController.getUpateProductView)
 
-server.get('/delete-product/:id', productController.deleteProduct)
+//Deleting the product
+server.post('/delete-product/:id', productController.deleteProduct)
 
 server.post(
     '/',
