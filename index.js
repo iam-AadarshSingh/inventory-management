@@ -3,6 +3,7 @@ import ProductController from './src/controllers/product.controller.js';
 import ejsLayouts from 'express-ejs-layouts';
 import path from 'path'
 import validationMiddleware from './src/middlewares/validation.middleware.js';
+import { uploadFile } from './src/middlewares/file-upload.middleware.js';
 const server = express();
 
 //Adding JavaScript file here from public folder
@@ -30,6 +31,7 @@ server.post('/delete-product/:id', productController.deleteProduct)
 server.post(
     '/',
     validationMiddleware,
+    uploadFile.single('imageurl'), //adding file-upload middleware
     productController.postAddProduct)
 
 server.post(

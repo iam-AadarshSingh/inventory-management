@@ -4,7 +4,7 @@ const validateRequest = async (req, res, next) => {
     const rules = [
         body('name').notEmpty().withMessage('Name is required'),
         body('price').isFloat({ gt: 0 }).withMessage('Price should be a positive value'),
-        body('imageUrl').isURL().withMessage('Invalid Url')
+        //body('imageUrl').isURL().withMessage('Invalid Url')
     ];
 
     //2. Run the rules
