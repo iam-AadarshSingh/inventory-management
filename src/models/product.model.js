@@ -24,6 +24,12 @@ export default class ProductModel {
     static getById(_id) {
         return products.find((p) => p._id == _id);
     }
+
+    //Delete product method
+    static delete(_id) {
+        const index = products.findIndex((p) => p._id == _id);
+        products.splice(index, 1);
+    }
 }
 
 var products = [

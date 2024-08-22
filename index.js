@@ -21,6 +21,8 @@ server.get("/", productController.getProduct)
 server.get('/new', productController.getAddForm);
 server.get('/update-product/:id', productController.getUpateProductView)
 
+server.get('/delete-product/:id', productController.deleteProduct)
+
 server.post(
     '/',
     validationMiddleware,
