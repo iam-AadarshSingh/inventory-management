@@ -16,8 +16,13 @@ export default class ProductModel {
         products[index] = productobj;
     }
 
-    static add(productobj) {
-        let newProduct = new ProductModel(products.length + 1, productobj.name, productobj.desc, productobj.price, productobj.imageurl)
+    static add(name, desc, price, imageurl) {
+        let newProduct = new ProductModel(
+            products.length + 1,
+            name,
+            desc,
+            price,
+            imageurl);
         products.push(newProduct);
     }
 

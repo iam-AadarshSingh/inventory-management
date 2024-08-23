@@ -14,7 +14,9 @@ class ProductController {
     }
 
     postAddProduct(req, res, next) {
-        ProductModel.add(req.body);
+        const { name, desc, price } = req.body;
+        const imageurl = 'images/' + req.file.filename;
+        ProductModel.add(name, desc, price, imageurl);
         var products = ProductModel.getAll()
         return res.render('index', { products: products })
     }
