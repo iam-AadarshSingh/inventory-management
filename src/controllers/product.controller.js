@@ -5,7 +5,7 @@ class ProductController {
     getProduct(req, res) {
         let products = ProductModel.getAll()
         //console.log(products)
-        res.render("index", { products: products })
+        res.render('index', { products })
         //return res.sendFile(path.join(path.resolve(), 'src', 'views', 'index.ejs'))
     }
 

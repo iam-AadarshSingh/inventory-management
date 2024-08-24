@@ -46,6 +46,20 @@ server.get(
     usersController.getRegister
 );
 
+server.get(
+    '/login',
+    usersController.getLogin
+);
+
+server.post(
+    '/login',
+    usersController.postLogin
+)
+
+server.post(
+    '/register',
+    usersController.postRegister
+);
 //server.use(express.static('src/views'))
 
 server.listen(3400);
