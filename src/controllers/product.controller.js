@@ -5,12 +5,12 @@ class ProductController {
     getProduct(req, res) {
         let products = ProductModel.getAll()
         //console.log(products)
-        res.render('index', { products })
+        res.render('index', { products, userEmail: req.session.userEmail });
         //return res.sendFile(path.join(path.resolve(), 'src', 'views', 'index.ejs'))
     }
 
-    getAddForm(req, res) {
-        return res.render('new-product', { errorMessage: null });
+    getAddProduct(req, res) {
+        return res.render('new-product', { errorMessage: null, userEmail: req.session.userEmail });
     }
 
     postAddProduct(req, res, next) {
@@ -18,7 +18,7 @@ class ProductController {
         const imageurl = 'images/' + req.file.filename;
         ProductModel.add(name, desc, price, imageurl);
         var products = ProductModel.getAll()
-        return res.render('index', { products: products })
+        return res.render('index', { products, userEmail: req.session.userEmail })
     }
 
     getUpateProductView(req, res, next) {
@@ -26,7 +26,7 @@ class ProductController {
         const id = req.params.id;
         const productFound = ProductModel.getById(id);
         if (productFound) {
-            res.render('update-product', { product: productFound, errorMessage: null });
+            res.render('update-product', { product: productFound, errorMessage: null, userEmail: req.session.userEmail });
         }
         //2. else return errors
         else {

@@ -44,9 +44,9 @@ server.get(
     productController.getUpateProductView)
 
 server.get(
-    '/new',
+    '/add-product',
     auth,
-    productController.getAddForm);
+    productController.getAddProduct);
 
 
 //Deleting the product
@@ -69,6 +69,7 @@ const usersController = new UserController();
 server.get('/register', usersController.getRegister);
 server.get('/login', usersController.getLogin);
 server.post('/login', usersController.postLogin);
+server.get('/logout', usersController.logout)
 server.post(
     '/register',
     usersController.postRegister);
