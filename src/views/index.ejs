@@ -1,38 +1,44 @@
-<h1 class="mt-5 mb-4 header">Products</h1>
-<table class="table table-dark">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
-            <th scope="col">Image</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <%products.forEach(product=>
-            {%>
-            <tr>
-                <th>
-                    <%= product._id %>
-                </th>
-                <td>
-                    <%= product._name %>
-                </td>
-                <td>
-                    <%= product._desc %>
-                </td>
-                <td scope="col">
-                    <%= product._price %>
-                </td>
-                <td><img src="<%= product.imageurl %>"></td>
-                <td>
-                    <a href="/update-product/<%= product._id %>" class="btn btn-warning">Update Product</a>
-                    <button class="btn btn-danger" onclick="deleteProduct('<%= product._id %>')">Delete Product</button>
-                    <!--<a href="/delete-product/<%= product._id %>" class="btn btn-danger">Delete Product</a>-->
-                </td>
-            </tr>
-            <%})%>
-    </tbody>
-</table>
+<%if(locals.lastVisit){%>
+    <div class="alert alert-primary" role="alert">
+        Your last visit was on : <% locals.lastVisit %>
+    </div>
+    <%}%>
+        <h1 class="mt-5 mb-4 header">Products</h1>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%products.forEach(product=>
+                    {%>
+                    <tr>
+                        <th>
+                            <%= product._id %>
+                        </th>
+                        <td>
+                            <%= product._name %>
+                        </td>
+                        <td>
+                            <%= product._desc %>
+                        </td>
+                        <td scope="col">
+                            <%= product._price %>
+                        </td>
+                        <td><img src="<%= product.imageurl %>"></td>
+                        <td>
+                            <a href="/update-product/<%= product._id %>" class="btn btn-warning">Update Product</a>
+                            <button class="btn btn-danger" onclick="deleteProduct('<%= product._id %>')">Delete
+                                Product</button>
+                            <!--<a href="/delete-product/<%= product._id %>" class="btn btn-danger">Delete Product</a>-->
+                        </td>
+                    </tr>
+                    <%})%>
+            </tbody>
+        </table>

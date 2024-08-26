@@ -7,10 +7,16 @@ import { uploadFile } from './src/middlewares/file-upload.middleware.js';
 import UserController from './src/controllers/user.controller.js';
 import session from 'express-session';
 import { auth } from './src/middlewares/auth.middleware.js';
+import cookieParser from 'cookie-parser';
+import { setLastVisit } from './src/middlewares/lastVisit.middleware.js';
 const server = express();
 
 //Adding JavaScript file here from public folder
 server.use(express.static("public"));
+
+//Configuring cookies middleware
+server.use(cookieParser());
+server.use(setLastVisit);
 
 //Configuring session middleware
 server.use(session(
@@ -50,7 +56,9 @@ server.get(
 
 
 //Deleting the product
-server.post('/delete-product/:id', auth, productController.deleteProduct)
+server.post('/delete-product/:id',
+    auth,
+    productController.deleteProduct)
 
 server.post(
     '/',
